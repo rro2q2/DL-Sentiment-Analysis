@@ -1,6 +1,7 @@
 import src.char_CNN.model as char_model
 import src.fastText.fasttext as ft_model
 import src.Text_CNN.Text_CNN as text_cnn_model
+import src.BERT.BERT as bert_model
 
 def main():
     ## Running the fastTest model ##
@@ -15,10 +16,11 @@ def main():
 
     print("**** RUNNING Text-CNN MODEL ****")
     text_cnn_hyperparams = {
-        "embedding_dimension" : 100,
-        "batch_size" : 64,
-        "epochs" : 10,
-        "dropout" : 0.5
+        "embedding_dimension": 100,
+        "batch_size": 64,
+        "epochs": 10,
+        "dropout": 0.5,
+        "learning_rate": .001
     }
 
     text_cnn_model.run_model(text_cnn_hyperparams,
@@ -27,6 +29,25 @@ def main():
                              "small")
 
     text_cnn_model.run_model(text_cnn_hyperparams,
+                             "../data/Proble4Dataset_large_train.csv",
+                             "../data/Proble4Dataset_large_test.csv",
+                             "large")
+
+    print("**** RUNNING BERT MODEL ****")
+    bert_hyperparams = {
+        "embedding_dimension": 256,
+        "batch_size": 10,
+        "epochs": 10,
+        "dropout": 0.25,
+        "learning_rate": .001
+    }
+
+    bert_model.run_model(bert_hyperparams,
+                             "../data/HW5_training.csv",
+                             "../data/HW5_test.csv",
+                             "small")
+
+    bert_model.run_model(bert_hyperparams,
                              "../data/Proble4Dataset_large_train.csv",
                              "../data/Proble4Dataset_large_test.csv",
                              "large")
