@@ -1,0 +1,11 @@
+fasttext
+pandas
+nltk
+sklearn
+matplotlib
+keras
+tensorflow
+torch
+torchtext
+spacy
+transformers
